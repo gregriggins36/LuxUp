@@ -1,0 +1,153 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+configurations {
+    ktlint
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.frate.luxup"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName rootProject.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules-test.pro'
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules-debug.pro'
+
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    kotlin {
+        experimental {
+            coroutines 'enable'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation libs
+    implementation kot
+    implementation support.v4
+    implementation support.v7
+    implementation support.design
+    implementation support.custom_tabs
+    implementation support.constraint_layout
+    implementation arch_components.navigation_fragment
+    implementation arch_components.navigation_ui
+    //Dagger 2
+    implementation dagger.lib
+    kapt dagger.compiler
+    compileOnly dagger.annotation
+    //Kombind
+    implementation kombind
+    //Timber Logging
+    implementation timber
+    //OkHttp
+    implementation okhttp.lib
+    implementation okhttp.logging
+    //Retrofit 2
+    implementation retrofit.lib
+    implementation retrofit.gson
+    implementation retrofit.rxjava
+    //RxJava 2
+    implementation rxjava
+    implementation rxandroid
+    //GSON
+    implementation gson
+    //Glide
+    implementation glide.lib
+    implementation(glide.recyclerview) {
+        // Excludes the support library because it’s already included by Glide.
+        transitive = false
+    }
+    kapt glide.compiler
+    //RecyclerView Dividers
+    implementation recyclerview_dividers
+    implementation coroutines
+    //Ktlint
+    ktlint kt_lint
+    //Android Ktx
+    implementation android_ktx
+
+
+    //Tests
+    testImplementation tests.junit.lib
+    testImplementation tests.junit.platform
+    testImplementation tests.junit.runner
+    testImplementation tests.android_support.arch
+    testImplementation(tests.spek.lib) {
+        exclude group: "org.jetbrains.kotlin"
+    }
+    testImplementation(tests.spek.engine) {
+        exclude group: "org.junit.platform"
+        exclude group: "org.jetbrains.kotlin"
+    }
+    testImplementation tests.spek.kotlin
+    testImplementation tests.hamcrest
+    testImplementation tests.mockito.lib
+    testImplementation tests.mockito.kotlin
+    testImplementation rxandroid
+
+
+    //UI Tests
+    androidTestImplementation tests.android_support.lib
+    androidTestImplementation tests.android_support.rules
+    androidTestImplementation tests.espresso.lib
+    androidTestImplementation(tests.espresso.contrib) {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+    androidTestImplementation tests.espresso.intents
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "src/**/*.kt"
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/shyiko/ktlint#usage for more
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}
