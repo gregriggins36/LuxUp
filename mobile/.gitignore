@@ -3,3 +3,5 @@ LuxUp.iml
 app/app.iml
 .gradle
 .idea
+mobile.iml
+local.properties
