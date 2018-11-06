@@ -2,7 +2,6 @@ package com.frate.luxup.net
 
 import com.frate.luxup.model.Article
 import com.google.gson.JsonObject
-import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -13,5 +12,5 @@ interface ArticleService {
     fun articles() : Single<List<Article>>
 
     @POST("/articles")
-    fun addArticle(@Body articleJson: JsonObject) : Completable
+    fun addArticle(@Body articleJson: JsonObject) : Single<Article>
 }

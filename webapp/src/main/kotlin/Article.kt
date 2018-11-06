@@ -1,7 +1,7 @@
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Table
 
-data class Article(val name: String, val image: String, val price: Float)
+data class Article(val id: Int?, val name: String, val image: String, val price: Float)
 
 object Articles : Table() {
     val id: Column<Int> = integer("id").autoIncrement().primaryKey()

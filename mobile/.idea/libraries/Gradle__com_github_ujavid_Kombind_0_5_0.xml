@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ujavid:Kombind-0.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Kombind-0.5.0.aar/b65c8223dc988697fb888f3074fbe475/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Kombind-0.5.0.aar/b65c8223dc988697fb888f3074fbe475/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ujavid/Kombind/0.5.0/3a56e6967ba502cb2d32f4d4a023594dbe6747cd/Kombind-0.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

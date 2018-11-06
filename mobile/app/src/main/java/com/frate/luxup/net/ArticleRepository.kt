@@ -1,7 +1,6 @@
 package com.frate.luxup.net
 
 import com.frate.luxup.model.Article
-import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -9,6 +8,6 @@ class ArticleRepository @Inject constructor(private val articleService: ArticleS
     fun articles(): Single<List<Article>> = articleService.articles()
         .compose(singleTransformer())
 
-    fun addArticle(): Completable = articleService.addArticle()
-        .compose(completableTransformer())
+    fun addArticle(article: Article): Single<Article> = articleService.addArticle(article.toJson())
+        .compose(singleTransformer())
 }

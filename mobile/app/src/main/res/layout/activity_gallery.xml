@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.frate.luxup.gallery.mvvm.GalleryViewModel"/>
+    </data>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".gallery.mvvm.GalleryActivity"
+            tools:ignore="UnknownIdInLayout">
+        <include layout="@layout/toolbar"/>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/photos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:layout_below="@+id/toolbar"
+                android:background="@android:color/white"
+                tools:listitem="@layout/item_gallery"/>
+        <include layout="@layout/toolbar_shadow"
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/toolbar_shadow_height"
+                 android:layout_below="@+id/toolbar"/>
+    </RelativeLayout>
+</layout>

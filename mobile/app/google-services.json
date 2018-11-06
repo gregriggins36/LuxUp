@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "1047532776518",
+    "firebase_url": "https://luxup-221100.firebaseio.com",
+    "project_id": "luxup-221100",
+    "storage_bucket": "luxup-221100.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047532776518:android:489543805cb13845",
+        "android_client_info": {
+          "package_name": "com.frate.luxup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047532776518-4svihf15rdsas5paee798mk7upj1frc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-yvB1qqofcQCkpgDi_f8rJewOMp1SHLc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047532776518:android:a9a6ae1047b701fc",
+        "android_client_info": {
+          "package_name": "com.frate.luxup.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047532776518-4svihf15rdsas5paee798mk7upj1frc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-yvB1qqofcQCkpgDi_f8rJewOMp1SHLc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,25 +6,6 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 28
     versionName = '1.0'
-    android_plugin_version = '3.2.1'
-
-    support_library_version = '28.0.0'
-    constraint_layout_version = '1.1.3'
-    architecture_components_version = '1.1.1'
-    kombind_version = '0.5.0'
-    glide_version = '4.7.1'
-    rxandroid_version = '2.0.2'
-    rxjava_version = '2.1.0'
-    okhttp_version = '3.8.0'
-    retrofit_version = '2.3.0'
-    timber_version = '1.3.0'
-    flexible_divider_version = '1.4.0'
-    dagger_version = '2.14.1'
-    javax_version = '10.0-b28'
-    gson_version = '2.8.2'
-    ktlint_version = '0.15.0'
-    coroutines_version = '0.21.2'
-    ktx_version = '0.3'
 
     junit_version = '4.12'
     junit_platform_version = '1.0.3'
@@ -37,74 +18,6 @@ ext {
 
     //Android Dependencies
     libs = fileTree(dir: 'libs', include: ['*.jar'])
-    kot = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    support = [
-            v4               : "com.android.support:support-v4:$support_library_version",
-            v7               : "com.android.support:appcompat-v7:$support_library_version",
-            design           : "com.android.support:design:$support_library_version",
-            custom_tabs      : "com.android.support:customtabs:$support_library_version",
-            constraint_layout: "com.android.support.constraint:constraint-layout:$constraint_layout_version"
-    ]
-
-    arch_components = [
-            navigation_fragment : "android.arch.navigation:navigation-fragment-ktx:$navigation_version",
-            navigation_ui : "android.arch.navigation:navigation-ui-ktx:$navigation_version",
-    ]
-
-    //Dagger
-    dagger = [
-            lib       : "com.google.dagger:dagger:$dagger_version",
-            compiler  : "com.google.dagger:dagger-compiler:$dagger_version",
-            annotation: "org.glassfish:javax.annotation:$javax_version"
-    ]
-
-    //DataBinding
-    databinding = "com.android.databinding:compiler:$android_plugin_version"
-
-    cardview = "com.android.support:cardview-v7:$support_library_version"
-
-    kt_lint = "com.github.shyiko:ktlint:$ktlint_version"
-
-    //Coroutines
-    coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-
-    //Android Core KTX
-    android_ktx = "androidx.core:core-ktx:$ktx_version"
-
-    //Kombind
-    kombind = "com.github.ujavid:Kombind:$kombind_version"
-
-    //Timber Logging
-    timber = "com.github.ajalt:timberkt:$timber_version"
-
-    //RecyclerView Dividers
-    recyclerview_dividers = "com.yqritc:recyclerview-flexibledivider:$flexible_divider_version"
-
-    //Glide
-    glide = [
-            lib         : "com.github.bumptech.glide:glide:$glide_version",
-            recyclerview: "com.github.bumptech.glide:recyclerview-integration:$glide_version",
-            compiler    : "com.github.bumptech.glide:compiler:$glide_version"
-    ]
-
-    gson = "com.google.code.gson:gson:$gson_version"
-
-    //OkHttp
-    okhttp = [
-            lib    : "com.squareup.okhttp3:okhttp:$okhttp_version",
-            logging: "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    ]
-
-    //Retrofit 2
-    retrofit = [
-            lib   : "com.squareup.retrofit2:retrofit:$retrofit_version",
-            gson  : "com.squareup.retrofit2:converter-gson:$retrofit_version",
-            rxjava: "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    ]
-
-    //RxJava 2
-    rxjava = "io.reactivex.rxjava2:rxjava:$rxjava_version"
-    rxandroid = "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
     //Tests
     tests = [
@@ -116,7 +29,7 @@ ext {
             android_support: [
                     lib  : "com.android.support.test:runner:$android_support_test_version",
                     rules: "com.android.support.test:rules:$android_support_test_version",
-                    arch : "android.arch.core:core-testing:$architecture_components_version"
+                    arch : "android.arch.core:core-testing:1.1.1"
             ],
             espresso       : [
                     lib    : "com.android.support.test.espresso:espresso-core:$espresso_version",
@@ -139,7 +52,6 @@ ext {
 
 buildscript {
     ext.kotlin_version = '1.2.71'
-    ext.navigation_version = '1.0.0-alpha06'
 
     repositories {
         google()
@@ -149,7 +61,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha07"
+        classpath 'com.google.gms:google-services:4.0.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

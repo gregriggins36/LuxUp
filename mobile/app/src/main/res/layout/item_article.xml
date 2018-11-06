@@ -4,13 +4,14 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="item" type="com.frate.luxup.model.Article"/>
-        <variable name="handler" type="com.frate.luxup.main.ArticleAdapter.Handler"/>
+        <variable name="handler" type="com.frate.luxup.feed.adapter.ArticleAdapter.Handler"/>
         <import type="java.lang.String"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white">
+            android:background="@android:color/white"
+            android:onClick="@{(v) -> handler.onArticleClick(item)}">
         <android.support.v7.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
@@ -18,7 +19,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{(v) -> handler.onArticleClick(item)}"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 android:layout_marginTop="@dimen/spacing_normal"

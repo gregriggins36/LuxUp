@@ -24,23 +24,34 @@ class DatabaseConfig {
                 }
             }
 
-    suspend fun addArticle(article: Article) {
-        dbQuery {
-            Articles.insert {
-                it[name] = article.name
-                it[image] = article.image
-                it[price] = article.price
-            }
-        }
+    suspend fun addArticle(article: Article) =
+            article(dbQuery {
+                Articles.insert {
+                    it[name] = article.name
+                    it[image] = article.image
+                    it[price] = article.price
+                }[Articles.id]
+            }!!)
+
+    private suspend fun article(id: Int) = dbQuery {
+        Articles.select {
+            Articles.id eq id
+        }.mapNotNull { toArticle(it) }
+                .single()
     }
 
     suspend fun articles() = dbQuery {
         Articles.selectAll()
-                .map { Article(
-                        it[Articles.name],
-                        it[Articles.image],
-                        it[Articles.price]) }
+                .map { toArticle(it) }
     }
+
+    private fun toArticle(row: ResultRow): Article =
+            Article(
+                    id = row[Articles.id],
+                    name = row[Articles.name],
+                    price = row[Articles.price],
+                    image = row[Articles.image]
+            )
 }
 
 object DbSettings {

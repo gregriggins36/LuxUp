@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="item" type="com.frate.luxup.gallery.adapter.GalleryIconItem"/>
+        <variable name="handler" type="com.frate.luxup.gallery.adapter.GalleryAdapter.Handler"/>
+    </data>
+    <com.frate.luxup.widget.SquareLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lighter_gray"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:onClick="@{(v) -> handler.onGalleryItemClick(item)}">
+        <ImageView
+                android:id="@+id/photo"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@{item.drawableResId}"
+                android:layout_gravity="center"
+                tools:src="@drawable/ic_photo_camera"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_large"
+                android:text="@{item.text}"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:gravity="center"
+                tools:text="Take a photo"/>
+    </com.frate.luxup.widget.SquareLinearLayout>
+</layout>

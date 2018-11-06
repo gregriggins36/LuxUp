@@ -35,7 +35,8 @@ fun Application.module() {
 
         post("/articles") {
             val request = call.receive<Article>()
-            db.addArticle(request)
+
+            call.respond(HttpStatusCode.OK, db.addArticle(request))
         }
 
         get("/articles") {

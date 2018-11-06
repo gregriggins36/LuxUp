@@ -40,7 +40,11 @@ abstract class BaseFragment<VM : KombindViewModel, VMF : ViewModelProvider.Facto
     protected fun <PVM : BaseViewModel> parentViewModel(clazz: Class<PVM>): PVM {
         if (parentFragment == null) throw RuntimeException("This fragment does not have any parent fragment!")
         return if (parentFragment is NavHostFragment) {
-            ViewModelProviders.of(parentFragment!!.parentFragment!!).get(clazz)
+            if (parentFragment!!.parentFragment == null) {
+                ViewModelProviders.of(parentFragment!!.activity!!).get(clazz)
+            } else {
+                ViewModelProviders.of(parentFragment!!.parentFragment!!).get(clazz)
+            }
         } else {
             ViewModelProviders.of(parentFragment!!).get(clazz)
         }
