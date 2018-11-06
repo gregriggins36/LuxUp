@@ -1,4 +1,5 @@
 build
 LuxUp.iml
 app/app.iml
-
+.gradle
+.idea
