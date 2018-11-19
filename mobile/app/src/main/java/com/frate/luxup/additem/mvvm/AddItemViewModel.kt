@@ -48,7 +48,10 @@ class AddItemViewModel(
         }
     }
 
-    private fun onUploadSuccess(article: Article) = state.uploadSuccess.postValue(Event(true))
+    private fun onUploadSuccess(article: Article) {
+        state.uploadSuccess.postValue(Event(true))
+        //state.photo.postValue(Uri.parse(article.image))
+    }
 
     private fun onUploadFail(t: Throwable) = Timber.d(t)
 

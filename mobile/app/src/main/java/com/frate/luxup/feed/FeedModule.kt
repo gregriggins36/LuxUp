@@ -5,6 +5,7 @@ import com.frate.luxup.CLOUD_STORAGE_BUCKET
 import com.frate.luxup.app.App
 import com.frate.luxup.feed.mvvm.FeedViewModel
 import com.frate.luxup.manager.InventoryManager
+import com.frate.luxup.manager.UserManager
 import com.frate.luxup.net.ArticleRepository
 import com.frate.luxup.net.ArticleService
 import com.frate.luxup.net.RestClient
@@ -17,8 +18,11 @@ import dagger.Provides
 class FeedModule {
     @Provides
     @FeatureScope
-    fun provideFeedViewModelFactory(app: App, inventoryManager: InventoryManager) =
-        FeedViewModel.Factory(app, inventoryManager)
+    fun provideFeedViewModelFactory(
+        app: App,
+        inventoryManager: InventoryManager,
+        userManager: UserManager) =
+        FeedViewModel.Factory(app, inventoryManager, userManager)
 
     @Provides
     @FeatureScope

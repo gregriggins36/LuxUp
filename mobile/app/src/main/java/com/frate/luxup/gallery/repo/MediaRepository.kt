@@ -1,9 +1,7 @@
 package com.frate.luxup.gallery.repo
 
 import android.content.Context
-import android.os.Build
 import android.os.Environment
-import android.text.TextUtils
 import java.io.File
 import java.util.regex.Pattern
 import javax.inject.Inject
@@ -48,18 +46,16 @@ class MediaRepository @Inject constructor() {
         val rawSecondaryStorageStr = System.getenv("SECONDARY_STORAGE")
         // Primary emulated SD-CARD
         val rawEmulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET")
-        if (TextUtils.isEmpty(rawEmulatedStorageTarget)) {
+        if (rawEmulatedStorageTarget.isNullOrBlank()) {
             // Device has physical external storage; use plain paths.
-            if (TextUtils.isEmpty(rawExternalStorage)) {
+            if (rawExternalStorage.isNullOrBlank()) {
                 // EXTERNAL_STORAGE undefined; falling back to default.
                 rv.add("/storage/sdcard0")
             } else {
                 rv.add(rawExternalStorage + "/" + Environment.DIRECTORY_DCIM)
                 rv.add(rawExternalStorage + "/" + Environment.DIRECTORY_DOWNLOADS)
                 rv.add(rawExternalStorage + "/" + Environment.DIRECTORY_PICTURES)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    rv.add(rawExternalStorage + "/" + Environment.DIRECTORY_DOCUMENTS)
-                }
+                rv.add(rawExternalStorage + "/" + Environment.DIRECTORY_DOCUMENTS)
                 if (includeVideos) rv.add(rawExternalStorage + "/" + Environment.DIRECTORY_MOVIES)
             }
         } else {
@@ -80,14 +76,14 @@ class MediaRepository @Inject constructor() {
             rawUserId = if (isDigit) lastFolder else ""
 
             // /storage/emulated/0[1,2,...]
-            if (TextUtils.isEmpty(rawUserId)) {
+            if (rawUserId.isBlank()) {
                 rv.add(rawEmulatedStorageTarget)
             } else {
                 rv.add(rawEmulatedStorageTarget + File.separator + rawUserId)
             }
         }
         // Add all secondary storages
-        if (!TextUtils.isEmpty(rawSecondaryStorageStr)) {
+        if (!rawSecondaryStorageStr.isNullOrEmpty()) {
             // All Secondary SD-CARDs split into array
             val rawSecondaryStorages = rawSecondaryStorageStr.split(File.pathSeparator.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             rv.addAll(rawSecondaryStorages)

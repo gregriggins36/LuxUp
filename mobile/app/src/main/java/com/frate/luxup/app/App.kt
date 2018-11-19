@@ -1,6 +1,7 @@
 package com.frate.luxup.app
 
 import android.app.Application
+import com.frate.luxup.repository.RepositoryModule
 
 class App : Application() {
     companion object {
@@ -20,6 +21,7 @@ class App : Application() {
         DaggerAppComponent
                 .builder()
                 .appModule(AppModule(this))
+                .repositoryModule(RepositoryModule(this))
                 .build()
     }
 

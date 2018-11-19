@@ -5,3 +5,4 @@ app/app.iml
 .idea
 mobile.iml
 local.properties
+app/google-services.json

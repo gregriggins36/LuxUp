@@ -5,4 +5,13 @@
     <string name="gallery_permission">You need to allow access to your gallery to pick a photo</string>
     <string name="could_not_find_camera">We couldn\'t find an application to open the camera.</string>
     <string name="action_done">Done</string>
+    <string name="listing_title">Listing title</string>
+    <string name="listing_price">Listing price</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="upload">Upload</string>
+    <string name="display_name">Display Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_out_failed">Sign out failed. Please try again later.</string>
 </resources>

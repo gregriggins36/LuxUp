@@ -6,4 +6,5 @@
 
     <color name="gray">#333</color>
     <color name="lighter_gray">#AAA</color>
+    <color name="warning_action">#99CC3333</color>
 </resources>

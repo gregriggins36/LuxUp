@@ -3,6 +3,7 @@ package com.frate.luxup.binding
 import android.databinding.BindingAdapter
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -19,6 +20,12 @@ object ImageViewBinding {
     @BindingAdapter("android:src")
     fun setImageResource(imageView: ImageView, resource: Int) {
         imageView.setImageResource(resource)
+    }
+
+    @JvmStatic
+    @BindingAdapter("android:src")
+    fun setImageUri(imageView: ImageView, uri: Uri) {
+        imageView.setImageURI(uri)
     }
 
     @JvmStatic

@@ -1,9 +1,12 @@
 import com.fasterxml.jackson.databind.SerializationFeature
+import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.*
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.features.StatusPages
+import io.ktor.freemarker.FreeMarker
+import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.http.*
 import io.ktor.jackson.jackson
 import io.ktor.request.receive
@@ -27,6 +30,9 @@ fun Application.module() {
             configure(SerializationFeature.INDENT_OUTPUT, true)
         }
     }
+    install(FreeMarker) {
+        templateLoader = ClassTemplateLoader(this@module.javaClass.classLoader, "templates")
+    }
 
     install(Routing) {
         get("/") {
@@ -41,6 +47,14 @@ fun Application.module() {
 
         get("/articles") {
             call.respond(db.articles())
+        }
+
+        get("/admins/articles") {
+            call.respond(
+                    FreeMarkerContent("admin_articles.ftl", mapOf(
+                            "articles" to db.articles()
+                    ))
+            )
         }
     }
 }
